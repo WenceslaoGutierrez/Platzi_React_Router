@@ -7,6 +7,7 @@ import Menu from './components/Menu'
 import Blog from './components/Blog'
 import Profile from './components/Profile'
 import Home from './components/Home'
+import BlogPost from './components/BlogPost'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<p>Not found</p>} />
         </Routes>

@@ -3,8 +3,13 @@ import { NavLink, Link } from "react-router-dom";
 const Menu = () => {
     const getLinkClasses = ({ isActive }: { isActive: boolean }) =>
       isActive ? "font-bold text-red-600" : "text-blue-600";
+
+    type RouteItem = {
+      to: string;
+      text: string;
+    };
     
-    const routes = [];
+    const routes: RouteItem[] = [];
     routes.push(
         {to: '/', text: 'Home'},
         {to: '/blog', text: 'Blog'},
@@ -20,33 +25,6 @@ const Menu = () => {
                     </NavLink>
                 </li>
             ))}
-
-            {/* <li>
-                <Link to="/">Home</Link>
-            </li>
-            <li>
-                <Link to="/blog">Blog</Link>
-            </li>
-            <li>
-                <Link to="/profile">Profile</Link>
-            </li> */}
-          
-            {/* <li>
-              <NavLink to="/" className={getLinkClasses}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/blog" className={getLinkClasses}>
-                Blog
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/profile" className={getLinkClasses}>
-                Profile
-              </NavLink>
-            </li> */}
-           
           </ul>
         </nav>
     );
