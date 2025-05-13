@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 
 const Menu = () => {
     const getLinkClasses = ({ isActive }: { isActive: boolean }) =>

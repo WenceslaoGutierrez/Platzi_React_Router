@@ -17,9 +17,7 @@ const Blog = () =>{
           <h1 className="text-3xl font-bold text-gray-800 mb-6">Blog</h1>
           <ul className="space-y-4">
             {blogData.map((post) => (
-              <li key={post.slug}>
-                <BlogLink post={post} />
-              </li>
+                <BlogLink key={post.slug} post={post} />
             ))}
           </ul>
         </div>
