@@ -14,6 +14,8 @@ const Menu = () => {
         {to: '/', text: 'Home'},
         {to: '/blog', text: 'Blog'},
         {to: '/profile', text: 'Profile'},
+        {to: '/login', text: 'Login'},
+        {to: '/logout', text: 'Logout'},
     );
     return (
         <nav className="bg-white p-4 shadow-md w-full rounded-b-md mb-2">
