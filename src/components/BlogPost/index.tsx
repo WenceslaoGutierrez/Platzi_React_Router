@@ -10,7 +10,7 @@ const BlogPost = () => {
 
     return (
       <>
-        <div className="mx-auto p-4 bg-white shadow-md rounded-md relative">
+        <div className="mx-auto p-4 bg-amber-50 shadow-md rounded-md relative">
           <div className="grid grid-cols-12 mb-6">
             <div className="col-span-2">
               <button
