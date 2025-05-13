@@ -5,8 +5,8 @@ export type Account = {
 };
 
 export type AccountContext = {
-    account: Record<string, unknown>;
-    setAccount: (data: Record<string, unknown>) => void;
+    account: Account;
+    setAccount: (data: Account) => void;
     signOut: boolean;
     setSignOut: (value: boolean) => void;
 }
