@@ -15,7 +15,8 @@ const Menu = () => {
         {to: '/blog', text: 'Blog'},
         {to: '/profile', text: 'Profile'},
         {to: '/login', text: 'Login'},
-        {to: '/logout', text: 'Logout'},
+        {to: '/logout', text: 'Log Out'},
+        {to: '/signup', text: 'Sign Up'},
     );
     return (
         <nav className="bg-white p-4 shadow-md w-full rounded-b-md mb-2">
