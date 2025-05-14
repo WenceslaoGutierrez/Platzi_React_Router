@@ -9,6 +9,7 @@ import { AuthProvider } from './context'
 import AccountForm from './components/AccountForm'
 import LoginForm from './components/Login'
 import LogoutButton from './components/Logout'
+import AuthPage from './pages/AuthPage'
 
 function App() {
 
@@ -22,10 +23,10 @@ function App() {
             <Route path="/blog" element={<Blog />}>
               <Route path=":slug" element={<BlogPost />} />
             </Route>
-            <Route path="/login" element={<LoginForm onSubmit={() => {}}/>} />
-            <Route path="/logout" element={<LogoutButton />} />
+            <Route path="/login" element={<AuthPage/>} />
+            <Route path="/logout" element={<AuthPage />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/signup" element={<AccountForm buttonLabel="Create account" onSubmit={() => {}} />} />
+            <Route path="/signup" element={<AuthPage/>} />
             <Route path="*" element={<p>Not found</p>} />
           </Routes>
         </AuthProvider>

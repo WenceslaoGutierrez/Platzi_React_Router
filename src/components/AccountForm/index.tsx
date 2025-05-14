@@ -5,9 +5,10 @@ interface AccountFormProps {
   initialData?: Account;
   buttonLabel: string;
   onSubmit: (data: Account) => void;
+  onSwitchToLogin: () => void;
 }
 
-function AccountForm({ initialData, buttonLabel, onSubmit }: AccountFormProps) {
+function AccountForm({ initialData, buttonLabel, onSubmit, onSwitchToLogin }: AccountFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: FormEvent) => {
@@ -25,9 +26,15 @@ function AccountForm({ initialData, buttonLabel, onSubmit }: AccountFormProps) {
   };
 
   return (
-    <form ref={formRef} className="flex flex-col gap-4 w-80 bg-white shadow-md rounded-lg p-6" onSubmit={handleSubmit}>
+    <form
+      ref={formRef}
+      className="flex flex-col gap-4 w-80 bg-white shadow-md rounded-lg p-6"
+      onSubmit={handleSubmit}
+    >
       <div className="flex flex-col gap-1">
-        <label htmlFor="name" className="font-light text-sm">Your name:</label>
+        <label htmlFor="name" className="font-light text-sm">
+          Your name:
+        </label>
         <input
           required
           type="text"
@@ -40,7 +47,9 @@ function AccountForm({ initialData, buttonLabel, onSubmit }: AccountFormProps) {
       </div>
 
       <div className="flex flex-col gap-1">
-        <label htmlFor="email" className="font-light text-sm">Your email:</label>
+        <label htmlFor="email" className="font-light text-sm">
+          Your email:
+        </label>
         <input
           required
           type="email"
@@ -53,7 +62,9 @@ function AccountForm({ initialData, buttonLabel, onSubmit }: AccountFormProps) {
       </div>
 
       <div className="flex flex-col gap-1">
-        <label htmlFor="password" className="font-light text-sm">Your password:</label>
+        <label htmlFor="password" className="font-light text-sm">
+          Your password:
+        </label>
         <input
           required
           type="password"
@@ -65,8 +76,19 @@ function AccountForm({ initialData, buttonLabel, onSubmit }: AccountFormProps) {
         />
       </div>
 
-      <button type="submit" className="bg-blue-500 hover:bg-blue-600 transition-colors text-white w-full rounded-lg py-3">
+      <button
+        type="submit"
+        className="bg-blue-500 hover:bg-blue-600 transition-colors text-white w-full rounded-lg py-3"
+      >
         {buttonLabel}
+      </button>
+
+      <button
+        type="button"
+        onClick={onSwitchToLogin}
+        className="text-sm text-blue-500 hover:underline mt-2"
+      >
+        Already have an account? Log In
       </button>
     </form>
   );

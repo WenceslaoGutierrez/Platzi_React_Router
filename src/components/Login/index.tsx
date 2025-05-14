@@ -2,9 +2,10 @@ import { useRef, type FormEvent } from "react";
 
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;
+  onSwitchToSignup: () => void;
 }
 
-function LoginForm({ onSubmit }: LoginFormProps) {
+function LoginForm({ onSubmit, onSwitchToSignup }: LoginFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: FormEvent) => {
@@ -19,9 +20,15 @@ function LoginForm({ onSubmit }: LoginFormProps) {
   };
 
   return (
-    <form ref={formRef} className="flex flex-col gap-4 w-80 bg-white shadow-md rounded-lg p-6" onSubmit={handleSubmit}>
+    <form
+      ref={formRef}
+      className="flex flex-col gap-4 w-80 bg-white shadow-md rounded-lg p-6"
+      onSubmit={handleSubmit}
+    >
       <div className="flex flex-col gap-1">
-        <label htmlFor="email" className="font-light text-sm">Email:</label>
+        <label htmlFor="email" className="font-light text-sm">
+          Email:
+        </label>
         <input
           required
           type="email"
@@ -33,7 +40,9 @@ function LoginForm({ onSubmit }: LoginFormProps) {
       </div>
 
       <div className="flex flex-col gap-1">
-        <label htmlFor="password" className="font-light text-sm">Password:</label>
+        <label htmlFor="password" className="font-light text-sm">
+          Password:
+        </label>
         <input
           required
           type="password"
@@ -44,9 +53,21 @@ function LoginForm({ onSubmit }: LoginFormProps) {
         />
       </div>
 
-      <button type="submit" className="bg-blue-500 hover:bg-blue-600 transition-colors text-white w-full rounded-lg py-3">
+      <button
+        type="submit"
+        className="bg-blue-500 hover:bg-blue-600 transition-colors text-white w-full rounded-lg py-3"
+      >
         Log In
       </button>
+
+      <button
+        type="button"
+        onClick={onSwitchToSignup}
+        className="text-sm text-blue-500 hover:underline mt-2"
+      >
+        Don't have an account? Sign Up
+      </button>
+      
     </form>
   );
 }

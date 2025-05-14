@@ -5,10 +5,21 @@ import { getParsedBoolean, getParsedStorageObject } from "../utils";
 export const AuthContext = createContext({} as AccountContext);
 
 export const initializeLocalStorage = (): { account: Account; signOut: boolean } => {
-  const parsedAccount = getParsedStorageObject("account") as Account | null;
-  const parsedSignout = getParsedBoolean('sign-out');
+  if (!localStorage.getItem("sign-out")) {
+    localStorage.setItem("sign-out", "true");
+  }
 
-  return {     account: parsedAccount ?? { name: "", email: "", password: "" }, signOut: parsedSignout };
+  if (!localStorage.getItem("account")) {
+    localStorage.setItem("account", JSON.stringify({ name: "", email: "", password: "" }));
+  }
+
+  const parsedAccount = getParsedStorageObject("account") as Account;
+  const parsedSignout = getParsedBoolean("sign-out");
+
+  return {
+    account: parsedAccount,
+    signOut: parsedSignout,
+  };
 };
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
