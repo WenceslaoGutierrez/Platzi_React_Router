@@ -15,4 +15,5 @@ export type RouteItem = {
   to: string;
   text: string;
   private: boolean;
+  guestOnly?: boolean;
 };
