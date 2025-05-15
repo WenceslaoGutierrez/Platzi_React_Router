@@ -10,3 +10,9 @@ export type AccountContext = {
     signOut: boolean;
     setSignOut: (value: boolean) => void;
 }
+
+export type RouteItem = {
+  to: string;
+  text: string;
+  private: boolean;
+};

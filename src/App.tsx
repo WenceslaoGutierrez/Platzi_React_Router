@@ -6,9 +6,6 @@ import Profile from './components/Profile'
 import Home from './components/Home'
 import BlogPost from './components/BlogPost'
 import { AuthProvider } from './context'
-import AccountForm from './components/AccountForm'
-import LoginForm from './components/Login'
-import LogoutButton from './components/Logout'
 import AuthPage from './pages/AuthPage'
 
 function App() {
