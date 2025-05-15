@@ -32,9 +32,7 @@ const Menu = () => {
             <li key={route.to}>
               <NavLink
                 to={route.to}
-                className={({ isActive }) =>
-                  isActive ? "text-blue-500 font-semibold" : "text-gray-700"
-                }
+                className={getLinkClasses}
               >
                 {route.text}
               </NavLink>

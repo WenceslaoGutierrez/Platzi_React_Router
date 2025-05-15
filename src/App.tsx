@@ -7,6 +7,7 @@ import Home from './components/Home'
 import BlogPost from './components/BlogPost'
 import { AuthProvider } from './context'
 import AuthPage from './pages/AuthPage'
+import PrivateRoute from './components/PrivateRoute'
 
 function App() {
 
@@ -20,16 +21,18 @@ function App() {
             <Route path="/blog" element={<Blog />}>
               <Route path=":slug" element={<BlogPost />} />
             </Route>
-            <Route path="/login" element={<AuthPage/>} />
+            <Route path="/login" element={<AuthPage />} />
+            <Route path="/signup" element={<AuthPage />} />
             <Route path="/logout" element={<AuthPage />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/signup" element={<AuthPage/>} />
+            <Route element={<PrivateRoute />}>
+              <Route path="/profile" element={<Profile />} />
+            </Route>
             <Route path="*" element={<p>Not found</p>} />
           </Routes>
         </AuthProvider>
       </HashRouter>
     </>
-  )
+  );
 }
 
 export default App

@@ -3,12 +3,12 @@ import type { Account } from "../../types";
 
 interface AccountFormProps {
   initialData?: Account;
-  buttonLabel: string;
+  buttonLabel?: string;
   onSubmit: (data: Account) => void;
-  onSwitchToLogin: () => void;
+  onSwitchTo: () => void;
 }
 
-function AccountForm({ initialData, buttonLabel, onSubmit, onSwitchToLogin }: AccountFormProps) {
+function AccountForm({ initialData, buttonLabel, onSubmit, onSwitchTo }: AccountFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: FormEvent) => {
@@ -85,7 +85,7 @@ function AccountForm({ initialData, buttonLabel, onSubmit, onSwitchToLogin }: Ac
 
       <button
         type="button"
-        onClick={onSwitchToLogin}
+        onClick={onSwitchTo}
         className="text-sm text-blue-500 hover:underline mt-2"
       >
         Already have an account? Log In

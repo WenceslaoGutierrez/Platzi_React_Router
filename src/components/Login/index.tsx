@@ -2,10 +2,10 @@ import { useRef, type FormEvent } from "react";
 
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;
-  onSwitchToSignup: () => void;
+  onSwitchTo: () => void;
 }
 
-function LoginForm({ onSubmit, onSwitchToSignup }: LoginFormProps) {
+function LoginForm({ onSubmit, onSwitchTo }: LoginFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: FormEvent) => {
@@ -62,12 +62,12 @@ function LoginForm({ onSubmit, onSwitchToSignup }: LoginFormProps) {
 
       <button
         type="button"
-        onClick={onSwitchToSignup}
+        onClick={onSwitchTo}
         className="text-sm text-blue-500 hover:underline mt-2"
       >
         Don't have an account? Sign Up
       </button>
-      
+
     </form>
   );
 }

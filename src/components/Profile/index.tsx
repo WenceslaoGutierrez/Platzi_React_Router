@@ -1,8 +1,12 @@
+import { useAuth } from "../../hooks";
+
 const Profile = () =>{
+    const {account} = useAuth();
 
     return(
         <>
-            <p>Profile</p>
+            <h1>Profile</h1>
+            <p>Welcome {account.name}</p>
         </>
     );
 }
