@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export const useAuth = () => {
   const { account, setAccount, signOut, setSignOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+
 
   const signIn = (email: string, password: string): boolean => {
     const storedAccount = localStorage.getItem("account");
@@ -27,11 +29,14 @@ export const useAuth = () => {
   const signOutUser = () => {
     setSignOut(true);
     localStorage.setItem("sign-out", "true");
-    const navigate = useNavigate();
     navigate("/login");
   };
 
-  const createAccount = (newAccount: Account) => {
+  const createAccount = (data: Omit<Account, "role">) => {
+    const newAccount: Account = {
+      ...data,
+      role: "user",
+    };
     localStorage.setItem("account", JSON.stringify(newAccount));
     setAccount(newAccount);
     setSignOut(false);

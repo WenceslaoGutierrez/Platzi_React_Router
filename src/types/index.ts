@@ -1,7 +1,10 @@
+import type { UserRole } from "../auth";
+
 export type Account = {
   name: string;
   email: string;
   password: string;
+  role : UserRole;
 };
 
 export type AccountContext = {
