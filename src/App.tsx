@@ -8,6 +8,7 @@ import BlogPost from './components/BlogPost'
 import { AuthProvider } from './context'
 import AuthPage from './pages/AuthPage'
 import PrivateRoute from './components/PrivateRoute'
+import BlogEditPost from './components/BlogEditPost'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />}>
               <Route path=":slug" element={<BlogPost />} />
+              <Route path=":slug/edit" element={<BlogEditPost />} />
             </Route>
             <Route path="/login" element={<AuthPage />} />
             <Route path="/signup" element={<AuthPage />} />

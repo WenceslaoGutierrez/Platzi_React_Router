@@ -20,6 +20,7 @@ function AccountForm({ initialData, buttonLabel, onSubmit, onSwitchTo }: Account
       name: formData.get("name") as string,
       email: formData.get("email") as string,
       password: formData.get("password") as string,
+      role: "user",
     };
 
     onSubmit(account);
