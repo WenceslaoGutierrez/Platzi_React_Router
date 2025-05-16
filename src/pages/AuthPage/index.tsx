@@ -4,10 +4,14 @@ import LoginForm from "../../components/Login";
 import AccountForm from "../../components/AccountForm";
 import type { Account } from "../../types";
 import Layout from "../../components/Layout";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function AuthPage() {
   const { signOut, signIn, createAccount } = useAuth();
   const { mode, renderAuthForm } = useAuthMode();
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const renderView = () => {
     if (!signOut) {
@@ -20,7 +24,13 @@ function AuthPage() {
         FormComponent: LoginForm,
         onSubmit: (email: string, password: string) => {
           const success = signIn(email, password);
-          if (!success) alert("Invalid credentials");
+          if (success) {
+            const from =
+              (location.state as { from?: Location })?.from?.pathname || "/";
+            navigate(from, { replace: true });
+          } else {
+            alert("Invalid credentials");
+          }
         },
         switchToPath: "signup",
       });
@@ -33,6 +43,9 @@ function AuthPage() {
         buttonLabel: "Sign Up",
         onSubmit: (data: Account) => {
           createAccount(data);
+          const from =
+            (location.state as { from?: Location })?.from?.pathname || "/";
+          navigate(from, { replace: true });
         },
         switchToPath: "login",
       });

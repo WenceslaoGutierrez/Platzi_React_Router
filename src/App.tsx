@@ -21,13 +21,13 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />}>
               <Route path=":slug" element={<BlogPost />} />
-              <Route path=":slug/edit" element={<BlogEditPost />} />
             </Route>
             <Route path="/login" element={<AuthPage />} />
             <Route path="/signup" element={<AuthPage />} />
             <Route path="/logout" element={<AuthPage />} />
             <Route element={<PrivateRoute />}>
               <Route path="/profile" element={<Profile />} />
+              <Route path="/blog/:slug/edit" element={<BlogEditPost />} />
             </Route>
             <Route path="*" element={<p>Not found</p>} />
           </Routes>

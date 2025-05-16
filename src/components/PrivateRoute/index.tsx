@@ -1,11 +1,17 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks";
 
 const PrivateRoute = () => {
-  const { signOut } = useAuth();
-  const isAuthenticated = !signOut;
+  const { account, signOut } = useAuth();
+  const location = useLocation();
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
+  const isAuthenticated = account.email !== "" && !signOut;
+
+  return isAuthenticated ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/login" state={{ from: location }} replace />
+  );
 };
 
 export default PrivateRoute;

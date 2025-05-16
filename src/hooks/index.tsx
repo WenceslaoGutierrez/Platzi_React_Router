@@ -68,7 +68,7 @@ export const useAuthMode = () => {
   }, [location.pathname]);
 
   const switchTo = (path: string) => {
-    navigate(`/${path}`);
+    navigate(`/${path}`, { state: location.state });
   };
 
   const renderAuthForm = <T,>({
