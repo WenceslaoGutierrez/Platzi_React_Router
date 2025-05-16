@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { blogData } from "../../data/blogData";
+import EditButton from "../EditButton";
 
 const BlogPost = () => {
     const {slug} = useParams();
@@ -28,6 +29,7 @@ const BlogPost = () => {
           <p className="text-sm text-gray-500 italic">
             Written by {blogpost?.author}
           </p>
+          <EditButton/>
         </div>
       </>
     );
