@@ -1,12 +1,25 @@
+import { useNavigate, useParams } from "react-router-dom";
 import { hasPermission } from "../../auth";
 import { useAuth } from "../../hooks";
 
 const EditButton = () => {
-  const { account } = useAuth();
+  const { slug } = useParams();
+  const navigate = useNavigate();
+  const { account, signOut } = useAuth();
 
-  if (!hasPermission(account.role, "edit")) return null;
+  const isAuthenticated = !signOut;
+  const canEdit = isAuthenticated && hasPermission(account.role, "edit");
 
-  return <button className="mt-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Edit</button>;
+  if (!canEdit) return null;
+
+  return (
+    <button
+      onClick={() => navigate(`/blog/${slug}/edit`)}
+      className="mt-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+    >
+      Edit
+    </button>
+  );
 };
 
 export default EditButton;
