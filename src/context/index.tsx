@@ -9,6 +9,10 @@ export const initializeLocalStorage = (): { account: Account; signOut: boolean }
     localStorage.setItem("sign-out", "true");
   }
 
+  if (!localStorage.getItem("users")) {
+    localStorage.setItem("users", JSON.stringify([]));
+  }
+
   if (!localStorage.getItem("account")) {
     localStorage.setItem("account", JSON.stringify({ name: "", email: "", password: "" }));
   }

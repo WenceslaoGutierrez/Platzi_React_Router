@@ -7,23 +7,29 @@ export const useAuth = () => {
   const { account, setAccount, signOut, setSignOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const getUsers = (): Account [] =>{
+    const storedUsers = localStorage.getItem("users");
+    return storedUsers ? JSON.parse(storedUsers) : [];
+  }
+
+  const setUsers = (users: Account[]) => {
+    localStorage.setItem("users", JSON.stringify(users));
+  };
 
   const signIn = (email: string, password: string): boolean => {
-    const storedAccount = localStorage.getItem("account");
-    if (!storedAccount) return false;
 
-    const parsedAccount = JSON.parse(storedAccount) as Account;
-
-    const valid =
-      parsedAccount.email === email && parsedAccount.password === password;
-
-    if (valid) {
-      setAccount(parsedAccount);
+    const users = getUsers();
+    const user = users.find((u) => email === email && u.password === password);
+    
+    if (user) {
+      setAccount(user);
       setSignOut(false);
+      localStorage.setItem("account", JSON.stringify(user));
       localStorage.setItem("sign-out", "false");
+      return true;
     }
 
-    return valid;
+    return false;
   };
 
   const signOutUser = () => {
@@ -32,14 +38,22 @@ export const useAuth = () => {
     navigate("/login");
   };
 
-  const createAccount = (data: Omit<Account, "role">) => {
-    const newAccount: Account = {
-      ...data,
-      role: "user",
-    };
-    localStorage.setItem("account", JSON.stringify(newAccount));
+  const createAccount = (data: Account) => {
+    const users = getUsers();
+
+    const exists = users.some(u => u.email === data.email);
+    if (exists) {
+      alert("Email already in use.");
+      return;
+    }
+
+    const newAccount: Account = { ...data, role: "user" };
+    const updatedUsers = [...users, newAccount];
+
+    setUsers(updatedUsers);
     setAccount(newAccount);
     setSignOut(false);
+    localStorage.setItem("account", JSON.stringify(newAccount));
     localStorage.setItem("sign-out", "false");
   };
 
