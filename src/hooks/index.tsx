@@ -19,7 +19,7 @@ export const useAuth = () => {
   const signIn = (email: string, password: string): boolean => {
 
     const users = getUsers();
-    const user = users.find((u) => email === email && u.password === password);
+    const user = users.find((u) => u.email === email && u.password === password);
     
     if (user) {
       setAccount(user);
