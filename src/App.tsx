@@ -9,6 +9,7 @@ import { AuthProvider } from './context'
 import AuthPage from './pages/AuthPage'
 import PrivateRoute from './components/PrivateRoute'
 import BlogEditPost from './components/BlogEditPost'
+import UserProfile from './components/UserProfile'
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
             <Route path="/logout" element={<AuthPage />} />
             <Route path="/profile" element={<Profile />} />
             <Route element={<PrivateRoute />}>
-              <Route path="/profile/:slug" element={<Profile />} />
+              <Route path="/profile/:slug" element={<UserProfile />} />
               <Route path="/blog/:slug/edit" element={<BlogEditPost />} />
             </Route>
             <Route path="*" element={<p>Not found</p>} />
