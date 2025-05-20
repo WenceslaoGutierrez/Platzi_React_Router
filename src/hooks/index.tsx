@@ -35,6 +35,7 @@ export const useAuth = () => {
   const signOutUser = () => {
     setSignOut(true);
     localStorage.setItem("sign-out", "true");
+    localStorage.setItem("account", JSON.stringify({ name: "", email: "", password: "", role: "" }));
     navigate("/login");
   };
 

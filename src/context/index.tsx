@@ -14,7 +14,7 @@ export const initializeLocalStorage = (): { account: Account; signOut: boolean }
   }
 
   if (!localStorage.getItem("account")) {
-    localStorage.setItem("account", JSON.stringify({ name: "", email: "", password: "" }));
+    localStorage.setItem("account", JSON.stringify({ name: "", email: "", password: "", role: "" }));
   }
 
   const parsedAccount = getParsedStorageObject("account") as Account;

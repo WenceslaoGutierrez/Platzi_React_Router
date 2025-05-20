@@ -25,8 +25,9 @@ function App() {
             <Route path="/login" element={<AuthPage />} />
             <Route path="/signup" element={<AuthPage />} />
             <Route path="/logout" element={<AuthPage />} />
+            <Route path="/profile" element={<Profile />} />
             <Route element={<PrivateRoute />}>
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile/:slug" element={<Profile />} />
               <Route path="/blog/:slug/edit" element={<BlogEditPost />} />
             </Route>
             <Route path="*" element={<p>Not found</p>} />
